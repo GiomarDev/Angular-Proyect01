@@ -14,6 +14,14 @@
     </mat-form-field>
 
     <div>
+        <app-input-img [urlImagenActual]="modelo?.foto" (archivoSeleccionado)="archivoSeleccionado($event)"></app-input-img>
+    </div>
+
+    <div>
+        <app-input-markdown></app-input-markdown>
+    </div>
+
+    <div>
         <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
         <a mat-stroked-button routerLink="/actores">
             Cancelar
