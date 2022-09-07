@@ -21,14 +21,19 @@ import { EditarActorComponent } from './actores/editar-actor/editar-actor.compon
 import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
 import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown'
+import { LeafletModule } from '@asymmetrik/ngx-leaflet'
 
 import { FormularioGeneroComponent } from './generos/formulario-genero/formulario-genero.component';
 import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component';
 import { FormularioActoresComponent } from './actores/formulario-actores/formulario-actores.component';
 import { InputImgComponent } from './utilidades/input-img/input-img.component';
-import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdown.component'
+import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdown.component';
+import { FormularioCinesComponent } from './cines/formulario-cines/formulario-cines.component';
+import { MapaComponent } from './utilidades/mapa/mapa.component';
+import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/formulario-pelicula.component';
+import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +57,11 @@ import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdo
     FiltroPeliculasComponent,
     FormularioActoresComponent,
     InputImgComponent,
-    InputMarkdownComponent
+    InputMarkdownComponent,
+    FormularioCinesComponent,
+    MapaComponent,
+    FormularioPeliculaComponent,
+    SelectorMultipleComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +69,8 @@ import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdo
     BrowserAnimationsModule,
     MeterialModule,
     ReactiveFormsModule,
+    LeafletModule,
+    FormsModule,
     MarkdownModule.forRoot()
   ],
   providers: [],
