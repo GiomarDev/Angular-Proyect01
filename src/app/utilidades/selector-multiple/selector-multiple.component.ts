@@ -13,11 +13,9 @@ export class SelectorMultipleComponent implements OnInit {
   }
 
   seleccionarTodo(){
-    
   }
 
   deseleccionarTodo(){
-
   }
 
 }
