@@ -28,7 +28,10 @@
     <app-input-markdown [contenidoMarkDown]="modelo?.resumen" (cambioMarkDown)="cambioMarkDown($event)" [placeHolderTextArea]="'Resumen'"></app-input-markdown>
 
     <h4>Seleccione los Generos</h4>
-    <app-selector-multiple></app-selector-multiple>
+    <app-selector-multiple [Seleccionado]="generosSeleccionado" [noSeleccionado]="generosNoSeleccionado"></app-selector-multiple>
+
+    <h4>Seleccione los Cines</h4>
+    <app-selector-multiple [Seleccionado]="cinesSeleccionado" [noSeleccionado]="cinesNoSeleccionado"></app-selector-multiple>
 
     <div>
         <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
