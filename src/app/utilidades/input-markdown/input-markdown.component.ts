@@ -18,6 +18,7 @@ export class InputMarkdownComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
