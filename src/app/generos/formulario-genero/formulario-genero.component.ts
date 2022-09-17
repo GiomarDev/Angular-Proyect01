@@ -15,7 +15,7 @@ export class FormularioGeneroComponent implements OnInit {
 
   form: FormGroup;
   @Output()
-  submit: EventEmitter<generoCreacionDTO> = new EventEmitter<generoCreacionDTO>();
+  onSubmit: EventEmitter<generoCreacionDTO> = new EventEmitter<generoCreacionDTO>();
   @Input()
   modelo: generoCreacionDTO;
 
@@ -24,8 +24,7 @@ export class FormularioGeneroComponent implements OnInit {
       nombre: ['', {
         validators: [
           Validators.required,
-          Validators.minLength(3),
-          primeraLetraMayuscula()
+          Validators.minLength(3)
         ]
       }]
     });
@@ -54,6 +53,6 @@ export class FormularioGeneroComponent implements OnInit {
   }
 
   guardarCambios(){
-    this.submit.emit(this.form.value);
+    this.onSubmit.emit(this.form.value);
   }
 }
