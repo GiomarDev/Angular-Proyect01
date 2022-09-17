@@ -33,6 +33,9 @@
     <h4>Seleccione los Cines</h4>
     <app-selector-multiple [Seleccionado]="cinesSeleccionado" [noSeleccionado]="cinesNoSeleccionado"></app-selector-multiple>
 
+    <h4>Seleccione los Actores</h4>
+    <app-autocomplete-actores></app-autocomplete-actores>
+
     <div>
         <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
         <a mat-stroked-button routerLink="/">Cancelar</a>

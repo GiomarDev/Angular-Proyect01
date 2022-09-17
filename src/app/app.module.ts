@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +34,8 @@ import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdo
 import { FormularioCinesComponent } from './cines/formulario-cines/formulario-cines.component';
 import { MapaComponent } from './utilidades/mapa/mapa.component';
 import { FormularioPeliculaComponent } from './peliculas/formulario-pelicula/formulario-pelicula.component';
-import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component'
+import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
+import { AutocompleteActoresComponent } from './actores/autocomplete-actores/autocomplete-actores.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +63,8 @@ import { SelectorMultipleComponent } from './utilidades/selector-multiple/select
     FormularioCinesComponent,
     MapaComponent,
     FormularioPeliculaComponent,
-    SelectorMultipleComponent
+    SelectorMultipleComponent,
+    AutocompleteActoresComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { SelectorMultipleComponent } from './utilidades/selector-multiple/select
     ReactiveFormsModule,
     LeafletModule,
     FormsModule,
+    HttpClientModule,
     MarkdownModule.forRoot()
   ],
   providers: [],
