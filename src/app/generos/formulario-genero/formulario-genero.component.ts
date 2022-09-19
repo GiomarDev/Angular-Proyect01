@@ -14,6 +14,8 @@ export class FormularioGeneroComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   form: FormGroup;
+  @Input()
+  errores: string[] = [];
   @Output()
   onSubmit: EventEmitter<generoCreacionDTO> = new EventEmitter<generoCreacionDTO>();
   @Input()
@@ -24,7 +26,8 @@ export class FormularioGeneroComponent implements OnInit {
       nombre: ['', {
         validators: [
           Validators.required,
-          Validators.minLength(3)
+          Validators.minLength(3),
+          primeraLetraMayuscula()
         ]
       }]
     });
