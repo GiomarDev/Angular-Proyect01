@@ -14,6 +14,9 @@ export class FormularioActoresComponent implements OnInit {
   form: FormGroup;
 
   @Input()
+  errores: [];
+
+  @Input()
   modelo: actorDTO;
 
   @Output()
