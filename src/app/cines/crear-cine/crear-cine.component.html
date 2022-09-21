@@ -1,2 +1,4 @@
 <h2>Crear Cine</h2>
-<app-formulario-cines (guardarCambios)="guardarCambios($event)"></app-formulario-cines>
+<app-formulario-cines
+[errores]="errores"
+(guardarCambios)="guardarCambios($event)"></app-formulario-cines>

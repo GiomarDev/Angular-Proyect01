@@ -15,6 +15,8 @@ export class FormularioCinesComponent implements OnInit {
 
   form: FormGroup;
   @Input()
+  errores: string[] = [];
+  @Input()
   modelo: cineCreacionDTO;
   @Output()
   guardarCambios: EventEmitter<cineCreacionDTO> = new EventEmitter<cineCreacionDTO>();
@@ -23,7 +25,7 @@ export class FormularioCinesComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nombre: ['', {
+      name: ['', {
         validators: [Validators.required]
       }],
       latitud: ['', {

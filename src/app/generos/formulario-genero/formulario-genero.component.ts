@@ -26,7 +26,7 @@ export class FormularioGeneroComponent implements OnInit {
       nombre: ['', {
         validators: [
           Validators.required,
-          Validators.minLength(3),
+          Validators. minLength(3),
           primeraLetraMayuscula()
         ]
       }]
