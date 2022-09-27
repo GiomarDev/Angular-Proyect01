@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { actorPeliculaDTO } from 'src/app/actores/actor';
 import { MultilpleSelectorModel } from 'src/app/utilidades/selector-multiple/multiple-selector';
 import { PeliculaCreacionDTO, PeliculaDTO } from '../pelicula';
 
@@ -16,12 +17,23 @@ export class FormularioPeliculaComponent implements OnInit {
   @Input()
   modelo: PeliculaDTO;
 
+  @Input()
+  actoresSeleccionados: actorPeliculaDTO[] = [];
+
   @Output()
   OnSubmit: EventEmitter<PeliculaCreacionDTO> = new EventEmitter<PeliculaCreacionDTO>();
 
-  generosNoSeleccionado: MultilpleSelectorModel[] = [{llave: 1, valor: "Drama"},{llave: 2, valor: "Terror"},{llave: 3, valor: "Accion"}];
+  @Input()
+  errores: string[] = [];
+
+  @Input()
+  generosNoSeleccionado: MultilpleSelectorModel[];
+  
   generosSeleccionado: MultilpleSelectorModel[] = [];
-  cinesNoSeleccionado: MultilpleSelectorModel[] = [{llave: 1, valor: 'Cineplanet'},{llave: 2, valor: 'Agora'}];
+  
+  @Input()
+  cinesNoSeleccionado: MultilpleSelectorModel[];
+
   cinesSeleccionado: MultilpleSelectorModel[] = [];
 
   ngOnInit(): void {
@@ -32,8 +44,9 @@ export class FormularioPeliculaComponent implements OnInit {
       trailer: '',
       fechaLanzamiento: '',
       poster: '',
-      generosID: '',
-      cinesID: ''
+      generosIDs: '',
+      cinesIDs: '',
+      actores: ''
     });
 
     if(this.modelo !== undefined){
@@ -44,10 +57,17 @@ export class FormularioPeliculaComponent implements OnInit {
   guardarCambios(){
     console.log(this.generosSeleccionado);
     const generosID = this.generosSeleccionado.map(valor => valor.llave);
-    this.form.get('generosID').setValue(generosID);
+    this.form.get('generosIDs').setValue(generosID);
 
     const cinesID = this.cinesSeleccionado.map(valor => valor.llave);
-    this.form.get('cinesID').setValue(cinesID);
+    this.form.get('cinesIDs').setValue(cinesID);
+
+    const actores = this.actoresSeleccionados.map(val => {
+      return {id: val.id, personaje: val.personaje}
+    });
+
+    this.form.get('actores').setValue(actores);
+
     this.OnSubmit.emit(this.form.value);
   }
 

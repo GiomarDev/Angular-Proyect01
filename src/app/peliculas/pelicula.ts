@@ -1,3 +1,7 @@
+import { actorPeliculaDTO } from "../actores/actor";
+import { cineDTO } from "../cines/cines";
+import { generoDTO } from "../generos/genero";
+
 export interface PeliculaCreacionDTO{
     titulo: string;
     resumen: string;
@@ -5,6 +9,9 @@ export interface PeliculaCreacionDTO{
     fechaLanzamiento: Date;
     trailer: string;
     poster: File;
+    generosIDs: number[];
+    actores: actorPeliculaDTO[];
+    cinesIDs: number[];
 }
 
 export interface PeliculaDTO{
@@ -14,4 +21,9 @@ export interface PeliculaDTO{
     fechaLanzamiento: Date;
     trailer: string;
     poster: string;
+}
+
+export interface PeliculasPostGet{
+    generos: generoDTO[];
+    cines: cineDTO[];
 }

@@ -11,7 +11,9 @@
     <h4>Seleccione El cine en el mapa</h4>
 
     <div>
-        <app-mapa (coordenadaSeleccionada)="coordenadaSeleccionada($event)" [coordenadasIniciales]="coordenadaInicial"></app-mapa>
+        <app-mapa 
+        (coordenadaSeleccionada)="coordenadaSeleccionada($event)" 
+        [coordenadasIniciales]="coordenadaInicial"></app-mapa>
     </div>
 
     <div>

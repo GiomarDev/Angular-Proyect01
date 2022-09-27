@@ -42,12 +42,13 @@ export class FormularioCinesComponent implements OnInit {
     }
   }
 
+  coordenadaSeleccionada(coordenada: Coordenada){
+    this.form.patchValue(coordenada);
+  }
+  
   OnSubmit(){
     this.guardarCambios.emit(this.form.value);
   }
 
-  coordenadaSeleccionada(coordenada: Coordenada){
-    this.form.patchValue(coordenada);
-  }
 
 }
