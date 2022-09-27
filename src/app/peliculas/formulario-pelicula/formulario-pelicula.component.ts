@@ -15,26 +15,32 @@ export class FormularioPeliculaComponent implements OnInit {
 
   form: FormGroup;
   @Input()
+  errores: string[] = [];
+
+  @Input()
   modelo: PeliculaDTO;
+
+  @Output()
+  OnSubmit: EventEmitter<PeliculaCreacionDTO> = new EventEmitter<
+    PeliculaCreacionDTO
+  >();
+
+  @Input()
+  generosNoSeleccionados: MultilpleSelectorModel[];
+
+  @Input()
+  generosSeleccionados: MultilpleSelectorModel[] = [];
+
+  @Input()
+  cinesNoSeleccionados: MultilpleSelectorModel[];
+
+  @Input()
+  cinesSeleccionados: MultilpleSelectorModel[] = [];
 
   @Input()
   actoresSeleccionados: actorPeliculaDTO[] = [];
 
-  @Output()
-  OnSubmit: EventEmitter<PeliculaCreacionDTO> = new EventEmitter<PeliculaCreacionDTO>();
-
-  @Input()
-  errores: string[] = [];
-
-  @Input()
-  generosNoSeleccionado: MultilpleSelectorModel[];
-  
-  generosSeleccionado: MultilpleSelectorModel[] = [];
-  
-  @Input()
-  cinesNoSeleccionado: MultilpleSelectorModel[];
-
-  cinesSeleccionado: MultilpleSelectorModel[] = [];
+  imagenCambiada: boolean = false;
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -55,11 +61,11 @@ export class FormularioPeliculaComponent implements OnInit {
   }
 
   guardarCambios(){
-    console.log(this.generosSeleccionado);
-    const generosID = this.generosSeleccionado.map(valor => valor.llave);
+    console.log(this.generosSeleccionados);
+    const generosID = this.generosSeleccionados.map(valor => valor.llave);
     this.form.get('generosIDs').setValue(generosID);
 
-    const cinesID = this.cinesSeleccionado.map(valor => valor.llave);
+    const cinesID = this.cinesSeleccionados.map(valor => valor.llave);
     this.form.get('cinesIDs').setValue(cinesID);
 
     const actores = this.actoresSeleccionados.map(val => {
@@ -68,11 +74,16 @@ export class FormularioPeliculaComponent implements OnInit {
 
     this.form.get('actores').setValue(actores);
 
+    if(!this.imagenCambiada){
+      this.form.patchValue({'poster': null});
+    }
+
     this.OnSubmit.emit(this.form.value);
   }
 
   archivoSeleccionado(archivo: File){
     this.form.get('poster').setValue(archivo);
+    this.imagenCambiada = true;
   }
 
   cambioMarkDown(texto){
