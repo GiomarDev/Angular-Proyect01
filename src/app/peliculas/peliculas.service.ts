@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { formatearFecha } from '../utilidades/utilidades';
-import { PeliculaCreacionDTO, PeliculasPostGet } from './pelicula';
+import { PeliculaCreacionDTO, PeliculaDTO, PeliculasPostGet } from './pelicula';
 
 
 @Injectable({
@@ -21,6 +21,10 @@ export class PeliculasService {
   public crear(pelicula: PeliculaCreacionDTO){
     const formData = this.construirFormData(pelicula);
     return this.http.post(this.apiURL, formData);
+  }
+
+  public obtenerPorID(id: number):Observable<PeliculaDTO>{
+    return this.http.get<PeliculaDTO>(`${this.apiURL}/${id}`);
   }
 
   private construirFormData(pelicula: PeliculaCreacionDTO): FormData{
