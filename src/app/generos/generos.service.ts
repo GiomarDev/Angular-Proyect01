@@ -13,7 +13,11 @@ export class GenerosService {
 
   private apiUrl = environment.apiUrl + "generos";
 
-  public obtenerTodos(pagina: number, cantidadRegistrosAMostrar: number): Observable<any>{
+  public obtenerTodos(){
+    return this.http.get<generoDTO[]>(`${this.apiUrl}/todos`);
+  }
+
+  public obtenerPaginado(pagina: number, cantidadRegistrosAMostrar: number): Observable<any>{
     let params = new HttpParams();
     params = params.append('pagina', pagina.toString());
     params = params.append('RecordsPagina', cantidadRegistrosAMostrar.toString());

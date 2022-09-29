@@ -12,13 +12,21 @@ export class LandingPageComponent implements OnInit {
   constructor(private peliculasService: PeliculasService) { }
 
   ngOnInit(): void {
+    this.cargarDatos();
+  }
+
+  peliculasEnCines: PeliculaDTO[];
+  peliculasProximosEstrenos: PeliculaDTO[];
+
+  cargarDatos(){
     this.peliculasService.obtenerLandingPage().subscribe(landingPage =>{
       this.peliculasEnCines = landingPage.enCines;
       this.peliculasProximosEstrenos = landingPage.proximosEstrenos;
     });
   }
 
-  peliculasEnCines: PeliculaDTO[];
-  peliculasProximosEstrenos: PeliculaDTO[];
+  borrado(){
+    this.cargarDatos();
+  }
 
 }
