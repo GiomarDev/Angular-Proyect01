@@ -38,7 +38,7 @@ export class SeguridadService {
   }
 
   obtenerRol(): string{
-    return '';
+    return 'admin';
   }
 
   obtenerCampoJWT(campo: string): string{
@@ -62,5 +62,9 @@ export class SeguridadService {
   guardarToken(respuestaAutenticacion: respuestaAutenticacion){
     localStorage.setItem(this.llaveToken, respuestaAutenticacion.token);
     localStorage.setItem(this.llaveExpiracion, respuestaAutenticacion.expiracion.toString());
+  }
+
+  obtenerToken(){
+    return localStorage.getItem(this.llaveToken);
   }
 }

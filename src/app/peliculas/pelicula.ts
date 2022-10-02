@@ -25,6 +25,8 @@ export interface PeliculaDTO{
     generos: generoDTO[];
     cines: cineDTO[];
     actores: actorPeliculaDTO[];
+    votoUser: number;
+    promedioVoto: number;
 }
 
 export interface PeliculasPostGet{
