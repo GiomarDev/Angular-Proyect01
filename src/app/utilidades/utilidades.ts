@@ -7,22 +7,28 @@ export function toBase64(file:File){
     })
 }
 
-export function parsearErroresAPI(response: any): string[]{
+export function parsearErroresAPI(response: any): string[] {
     const resultado: string[] = [];
+    console.log(response.status);
 
-    if(response.error){
-        if(typeof response.error.error === 'string'){
+    if (response.status === 500){
+    resultado.push('Ha ocurrido un error en el servidor. Favor intentar más tarde');
+    return resultado;
+    }
+    
+    if (response.error) {
+        if (typeof response.error === 'string') {
             resultado.push(response.error);
         }
-        else{
+        else {
             const mapaErrores = response.error.errors;
             const entradas = Object.entries(mapaErrores);
             entradas.forEach((arreglo: any[]) => {
-                const campo = arreglo[0];
-                arreglo[1].forEach(mensajeError => {
-                    resultado.push(`${campo}: ${mensajeError}`);
-                })
-            })
+            const campo = arreglo[0];
+            arreglo[1].forEach((mensajeError) => {
+                resultado.push(`${campo}: ${mensajeError}`);
+            });
+            });
         }
     }
 
